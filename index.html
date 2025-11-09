@@ -1,0 +1,519 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- Configuración de viewport para un buen comportamiento en móviles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Metadatos básicos para SEO -->
+  <meta
+    name="description"
+    content="Guía completa de hardware de ordenadores: CPU, RAM, placa base, arquitectura y demostraciones con Flexbox y HTML semántico."
+  />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0f0f10" />
+
+  <!-- Etiquetas Open Graph para una vista previa correcta al compartir -->
+  <meta property="og:title" content="HardwareLab — Hardware de Ordenadores" />
+  <meta
+    property="og:description"
+    content="Aprende sobre los componentes de un PC con diseño moderno, Flexbox y semántica."
+  />
+  <meta property="og:image" content="imagenes/introduccion.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="#" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>Hardware de Ordenadores</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Cabecera con marca y menú principal -->
+  <header class="topbar site-header">
+    <div class="wrap topbar__inner">
+      <h1 class="brand">Hardware<span>Lab</span></h1>
+
+      <!-- Menú principal con submenús y modo responsive -->
+      <nav id="menu" aria-label="Menú principal">
+        <div class="wrap">
+          <input type="checkbox" id="responsive-menu" onclick="updatemenu()" />
+          <label for="responsive-menu"></label>
+
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+
+            <li>
+              <a class="dropdown-arrow" href="#componentes">Componentes</a>
+              <ul class="sub-menus">
+                <li><a href="#componentes">General</a></li>
+                <li><a href="#componentes">CPU</a></li>
+                <li><a href="#componentes">Placa base</a></li>
+                <li><a href="#componentes">RAM</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a class="dropdown-arrow" href="#flexbox">Flexbox</a>
+              <ul class="sub-menus">
+                <li><a href="#flexbox">Centrado perfecto</a></li>
+                <li><a href="#flexbox">Wrap</a></li>
+                <li><a href="#flexbox">Layouts</a></li>
+              </ul>
+            </li>
+
+            <li><a href="#semantico">HTML semántico</a></li>
+            <li><a href="#guia">Guía diseño</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenido principal del sitio -->
+  <main id="contenido" class="site-main">
+    <!-- Sección de presentación (hero) -->
+    <section id="inicio" class="hero hero--primary">
+      <div class="wrap hero__content">
+        <div class="hero__text">
+          <h2>Arquitectura y componentes de un PC</h2>
+          <p class="lead">
+            Diseño responsive con Flexbox y estructura semántica moderna.
+          </p>
+        </div>
+
+        <!-- Imagen destacada del hero -->
+        <figure class="hero-media">
+          <img
+            src="imagenes/introduccion.png"
+            alt="Imagen introductoria del hardware"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <!-- Sección con tarjetas de componentes -->
+    <section id="componentes" class="section">
+      <div class="wrap">
+        <h2>Componentes principales</h2>
+
+        <div class="cards" role="list">
+          <article class="card" role="listitem">
+            <img src="imagenes/macbook.jpeg" alt="CPU" />
+            <div class="card__body">
+              <h3>CPU</h3>
+              <p>Ejecuta instrucciones y coordina todos los procesos.</p>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <img src="imagenes/placa.jpeg" alt="Placa base" />
+            <div class="card__body">
+              <h3>Placa base</h3>
+              <p>La estructura principal que conecta todos los componentes.</p>
+            </div>
+          </article>
+
+          <article class="card" role="listitem">
+            <img src="imagenes/ram.jpg" alt="Memoria RAM" />
+            <div class="card__body">
+              <h3>RAM</h3>
+              <p>Memoria temporal que acelera los procesos en ejecución.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN: Hardware en detalle con barra lateral adicional -->
+    <section id="hardware" class="section section--hardware">
+      <div class="wrap">
+        <h2>Hardware en detalle</h2>
+
+        <div class="hw-layout">
+          <!-- Columna principal con contenido ampliado -->
+          <article class="hw-main flow">
+            <section aria-labelledby="cpu-title">
+              <h3 id="cpu-title">CPU</h3>
+              <ul>
+                <li>Núcleos e hilos: más paralelismo para multitarea y render.</li>
+                <li>Frecuencia (GHz): influye en la latencia y tareas monohilo.</li>
+                <li>Cache L1/L2/L3: reduce accesos a memoria más lenta.</li>
+                <li>Socket y chipset: compatibilidad con la placa base.</li>
+                <li>Consumo (TDP): impacta en la refrigeración y la fuente.</li>
+              </ul>
+            </section>
+
+            <section aria-labelledby="gpu-title">
+              <h3 id="gpu-title">GPU</h3>
+              <ul>
+                <li>Shaders/CUDA/Stream: capacidad de cómputo gráfico y GPGPU.</li>
+                <li>VRAM: texturas y modelos a alta resolución sin cuellos de botella.</li>
+                <li>Ancho de banda: bus y tipo de memoria (GDDR6, HBM).</li>
+                <li>Soporte API: DirectX, Vulkan, OpenCL, CUDA.</li>
+                <li>Consumo y tamaño: requisito para la caja y la fuente.</li>
+              </ul>
+            </section>
+
+            <section aria-labelledby="almacen-title">
+              <h3 id="almacen-title">Almacenamiento</h3>
+              <div class="table-scroll">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Característica</th>
+                      <th>SSD NVMe</th>
+                      <th>HDD</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Velocidad</td>
+                      <td>Muy alta (PCIe, GB/s)</td>
+                      <td>Moderada (MB/s)</td>
+                    </tr>
+                    <tr>
+                      <td>Latencia</td>
+                      <td>Baja</td>
+                      <td>Alta</td>
+                    </tr>
+                    <tr>
+                      <td>Capacidad €/GB</td>
+                      <td>Más cara</td>
+                      <td>Más barata</td>
+                    </tr>
+                    <tr>
+                      <td>Ruido/Vibración</td>
+                      <td>Prácticamente nulo</td>
+                      <td>Perceptible</td>
+                    </tr>
+                    <tr>
+                      <td>Uso recomendado</td>
+                      <td>Sistema/juegos/edición</td>
+                      <td>Almacén masivo</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>Para un equipo equilibrado: SSD NVMe para sistema y aplicaciones; HDD opcional para archivos grandes.</p>
+            </section>
+
+            <section aria-labelledby="psu-title">
+              <h3 id="psu-title">Fuente de alimentación (PSU)</h3>
+              <ul>
+                <li>Potencia real (W) con margen del 20–30% sobre el pico esperado.</li>
+                <li>Certificación 80 Plus (Bronze/Gold/Platinum) para eficiencia.</li>
+                <li>Railes y conectores PCIe/CPU suficientes para la GPU/CPU elegidas.</li>
+                <li>Formato (ATX/SFX) según el chasis.</li>
+              </ul>
+            </section>
+
+            <section aria-labelledby="cooling-title">
+              <h3 id="cooling-title">Refrigeración</h3>
+              <ul>
+                <li>Disipador aire o líquida AIO según TDP y espacio disponible.</li>
+                <li>Curvas de ventilador ajustadas para equilibrio ruido/temperatura.</li>
+                <li>Pasta térmica aplicada de forma uniforme.</li>
+              </ul>
+            </section>
+
+            <section aria-labelledby="case-title">
+              <h3 id="case-title">Caja y flujo de aire</h3>
+              <ul>
+                <li>Entradas frontales/bajo y salidas traseras/superiores para flujo.</li>
+                <li>Filtros antipolvo y gestión de cables para mejorar temperaturas.</li>
+                <li>Compatibilidad con longitudes de GPU y altura de disipador.</li>
+              </ul>
+            </section>
+
+            <section aria-labelledby="perif-title">
+              <h3 id="perif-title">Periféricos</h3>
+              <ul>
+                <li>Monitor: resolución, tasa de refresco (Hz) y tipo de panel.</li>
+                <li>Teclado y ratón según el uso (ofimática, juego, diseño).</li>
+                <li>Audio: interfaz USB o DAC dedicado si se requiere baja latencia.</li>
+              </ul>
+            </section>
+          </article>
+
+          <!-- Barra lateral adicional con información práctica -->
+          <aside class="hw-aside" aria-label="Referencia rápida">
+            <section class="stack-md">
+              <h4>Especificaciones clave</h4>
+              <ul>
+                <li>CPU: núcleos/hilos, frecuencia, caché, TDP.</li>
+                <li>GPU: VRAM, ancho de banda, consumo.</li>
+                <li>RAM: 16–32 GB DDR4/DDR5 según el caso.</li>
+                <li>SSD: NVMe PCIe para el SO y apps.</li>
+                <li>PSU: 80 Plus, conectores suficientes.</li>
+              </ul>
+            </section>
+
+            <section class="stack-md">
+              <h4>Glosario rápido</h4>
+              <dl class="glossary">
+                <dt>TDP</dt><dd>Potencia térmica a disipar.</dd>
+                <dt>VRAM</dt><dd>Memoria dedicada de la GPU.</dd>
+                <dt>PCIe</dt><dd>Interfaz de alta velocidad para GPU/SSD.</dd>
+                <dt>NVMe</dt><dd>Protocolo para SSDs de baja latencia.</dd>
+              </dl>
+            </section>
+
+            <section class="stack-md">
+              <h4>Consejos de compra</h4>
+              <ul>
+                <li>Equilibra CPU y GPU según el uso principal.</li>
+                <li>Prioriza SSD rápido; amplía almacenamiento después.</li>
+                <li>Deja margen en la PSU para futuras ampliaciones.</li>
+              </ul>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ejemplo de layout con contenido y barra lateral -->
+    <section class="section">
+      <div class="wrap">
+        <h2>Diseño principal + barra lateral</h2>
+
+        <div class="layout">
+          <article class="layout-main">
+            <h3>Contenido principal</h3>
+            <p>Ejemplo de estructura con Flexbox para secciones internas.</p>
+          </article>
+
+          <aside class="layout-aside">
+            <h4>Notas</h4>
+            <ul>
+              <li>Uso de landmarks semánticos</li>
+              <li>Accesibilidad ARIA</li>
+              <li>Diseño responsivo</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demostraciones de Flexbox con ejemplos prácticos -->
+    <section id="flexbox" class="section section--alt">
+      <div class="wrap">
+        <h2>Flexbox como pilar del diseño</h2>
+
+        <h3>1. Centrado perfecto</h3>
+        <div class="demo">
+          <div class="parent">
+            <div class="child demo-box">Centrado</div>
+          </div>
+        </div>
+
+        <h3>Ejemplo de código</h3>
+        <pre class="code">
+.parent {
+  display: flex;
+  height: 300px;
+}
+.child {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+}
+        </pre>
+
+        <h3>2. Distribución fluida</h3>
+        <div class="demo">
+          <div class="flex-container demo-wrap">
+            <div class="pill">Item</div>
+            <div class="pill">Item</div>
+            <div class="pill">Item</div>
+            <div class="pill">Item</div>
+          </div>
+        </div>
+
+        <pre class="code">
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+        </pre>
+
+        <h3>3. Navegación responsive</h3>
+        <pre class="code">
+/* Grande */
+.navigation { display: flex; flex-flow: row wrap; justify-content: flex-end; }
+/* Medianas */
+@media all and (max-width: 800px) { .navigation { justify-content: space-around; } }
+/* Pequeñas */
+@media all and (max-width: 500px) { .navigation { flex-direction: column; } }
+        </pre>
+
+        <h3>4. Layout mobile-first</h3>
+        <div class="demo">
+          <div class="wrapper">
+            <header class="header">Header</header>
+            <main class="main">Main</main>
+            <aside class="aside aside-1">Aside 1</aside>
+            <aside class="aside aside-2">Aside 2</aside>
+            <footer class="footer">Footer</footer>
+          </div>
+        </div>
+
+        <pre class="code">
+.wrapper { display: flex; flex-flow: row wrap; }
+/* Todos al 100% */
+.wrapper > * { flex: 1 100%; }
+
+/* medianas */
+@media all and (min-width: 600px) {
+  .aside { flex: 1 auto; }
+}
+
+/* grandes */
+@media all and (min-width: 800px) {
+  .main { flex: 3 0px; }
+  .aside-1 { order: 1; }
+  .main    { order: 2; }
+  .aside-2 { order: 3; }
+  .footer  { order: 4; }
+}
+        </pre>
+      </div>
+    </section>
+
+    <!-- Ejemplos no semántico y semántico colocados en paralelo -->
+    <section id="semantico" class="section">
+      <div class="wrap">
+        <h2>HTML semántico</h2>
+
+        <div class="semantics-grid">
+          <article class="sem-card">
+            <h3>No semántico</h3>
+            <pre class="code">
+<div>
+  <span>Three words</span>
+  <div>
+    <a>one word</a>
+    <a>one word</a>
+    <a>one word</a>
+    <a>one word</a>
+  </div>
+</div>
+
+<div>
+  <div>
+    <div>five words</div>
+  </div>
+
+  <div>
+    <div>three words</div>
+    <div>forty-six words</div>
+    <div>forty-four words</div>
+  </div>
+
+  <div>
+    <div>seven words</div>
+    <div>sixty-eight words</div>
+    <div>forty-four words</div>
+  </div>
+</div>
+
+<div>
+  <span>five words</span>
+</div>
+            </pre>
+          </article>
+
+          <article class="sem-card">
+            <h3>Semántico</h3>
+            <pre class="code">
+<header>
+  <h1>Three words</h1>
+  <nav>
+    <a>one word</a>
+    <a>one word</a>
+    <a>one word</a>
+    <a>one word</a>
+  </nav>
+</header>
+
+<main>
+  <header>
+    <h2>five words</h2>
+  </header>
+
+  <section>
+    <h2>three words</h2>
+    <p>forty-six words</p>
+    <p>forty-four words</p>
+  </section>
+
+  <section>
+    <h3>seven words</h3>
+    <p>sixty-eight words</p>
+    <p>forty-four words</p>
+  </section>
+</main>
+
+<footer>
+  <p>five words</p>
+</footer>
+            </pre>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumen de criterios de diseño aplicados -->
+    <section id="guia" class="section section--alt">
+      <div class="wrap">
+        <h2>Guía de diseño — 6 puntos</h2>
+
+        <ol class="flow">
+          <li>
+            <strong>Coherencia visual:</strong> paleta 3–5 colores, 1–2
+            tipografías y estilo uniforme.
+          </li>
+          <li>
+            <strong>Jerarquía clara:</strong> destaca lo importante con
+            tamaño, color y posición.
+          </li>
+          <li>
+            <strong>Espacios en blanco:</strong> márgenes y paddings para
+            evitar saturación visual.
+          </li>
+          <li>
+            <strong>Navegación intuitiva:</strong> menús claros también en
+            móviles.
+          </li>
+          <li>
+            <strong>Optimización y accesibilidad:</strong> contraste, ALT,
+            teclado y carga rápida.
+          </li>
+          <li>
+            <strong>Elementos destacados:</strong> botones visibles y
+            microinteracciones suaves.
+          </li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pie de página con créditos -->
+  <footer id="contacto" class="site-footer">
+    <div class="wrap footer__inner">
+      <p>&copy; 2025 HardwareLab — Flexbox + Semántica + Diseño</p>
+    </div>
+  </footer>
+
+  <script>
+    function updatemenu() {}
+  </script>
+</body>
+</html>
