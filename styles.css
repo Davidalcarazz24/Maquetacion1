@@ -1,623 +1,528 @@
 /* =======================
-   Reset y variables base
+1.Boilerplate HTML + CSS propio
+2.Reset / Normalize
+3.Estructura semántica (header, nav, main, aside, footer…)
+4.Metas principales
+5.Diseño con Flexbox
+6.Contenedores de ancho variable (1000–2000px, estilo Apple)
+7.Uso de imágenes + alt
+8.Fuentes e iconos desde CDN
+9.Uso correcto de colores y tipografías
+10.Menú con interacciones (tipo css3-menu-generator)
+11.Footer con redes sociales
+12.Contenido propio o Lorem Ipsum con artículos repetidos
    ======================= */
+
+/* =======================
+   RESET Y VARIABLES
+   ======================= */
+
+/* APARTADO 2. Reset / Normalize */
 * {
-  box-sizing: border-box;
-}
-html,
-body {
-  margin: 0;
-  padding: 0;
+  box-sizing: border-box; /* Controla el modelo de caja */
 }
 
+html, body {
+  margin: 0; /* Elimina márgenes por defecto */
+  padding: 0; /* Elimina rellenos por defecto */
+}
+
+/* Variables globales de diseño */
+/* APARTADO 9. Colores y tipografías */
 :root {
-  --bg: #0f0f10;
-  --panel: #151517;
-  --ink: #e8e8ea;
-  --muted: #9aa0a6;
-  --line: #242426;
-  --brand: #0099cc;
-  --accent: #00d1b2;
-  --radius: 16px;
-  --shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  --bg: #0f0f10;        /* Fondo principal */
+  --panel: #151517;    /* Fondo de paneles */
+  --ink: #e8e8ea;      /* Texto principal */
+  --muted: #9aa0a6;    /* Texto secundario */
+  --line: #242426;     /* Bordes */
+  --brand: #0099cc;    /* Color corporativo */
+  --radius: 16px;      /* Bordes redondeados */
+  --shadow: 0 10px 24px rgba(0,0,0,.3); /* Sombra común */
 }
 
+/* Estilos base del documento */
+/* APARTADO 9. Colores y tipografías */
 body {
-  background: var(--bg);
-  color: var(--ink);
-  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
-    "Helvetica Neue", Arial;
+  background: var(--bg); /* Aplica fondo general */
+  color: var(--ink); /* Aplica color de texto */
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial; /* Tipografía base */
 }
 
+/* Enlaces base */
 a {
-  text-decoration: none;
-  color: inherit;
+  color: inherit; /* Hereda color */
+  text-decoration: none; /* Elimina subrayado */
 }
 
-/* Enlace para saltar al contenido principal */
+/* =======================
+   ACCESIBILIDAD
+   ======================= */
+
 .skip-link {
-  position: absolute;
-  left: -999px;
+  position: absolute; /* Sale del flujo */
+  left: -999px; /* Oculta visualmente */
 }
+
 .skip-link:focus {
-  position: static;
-  padding: 8px;
-  background: #fff;
-  color: #000;
+  position: static; /* Vuelve al flujo */
+  padding: 8px; /* Espacio interno */
+  background: #fff; /* Fondo visible */
+  color: #000; /* Texto legible */
 }
 
-/* =========================================
-   Contenedor central (mín 1000px, máx 2000px)
-   ========================================= */
+:focus-visible {
+  outline: 3px solid var(--brand); /* Foco visible */
+  outline-offset: 2px; /* Separación */
+}
+
+img[loading="lazy"] {
+  content-visibility: auto; /* Optimiza renderizado */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important; /* Elimina animaciones */
+    transition: none !important; /* Elimina transiciones */
+  }
+}
+
+/* =======================
+   CONTENEDOR
+   ======================= */
+
+
+/* APARTADO 6. Contenedores de ancho variable */
 .wrap {
-  width: clamp(1000px, 92vw, 2000px);
-  margin: 0 auto;
+  width: clamp(1000px, 92vw, 2000px); /* Ancho mínimo y máximo */
+  margin: 0 auto; /* Centrado */
 }
 
 /* =======================
-   Cabecera superior
+   CABECERA Y MENÚ
    ======================= */
+
+/* 3. Estructura semántica: header */
+
 .topbar {
-  backdrop-filter: blur(8px);
-  padding: 5px 0;
-}
-.topbar__inner {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.brand {
-  font-weight: 700;
-  font-size: 1.4rem;
-}
-.brand span {
-  color: var(--brand);
+  backdrop-filter: blur(8px); /* Desenfoque */
+  padding: 5px 0; /* Espaciado vertical */
 }
 
-/* =======================
-   Menú interactivo
-   ======================= */
-#menu {
-  background: var(--brand);
-  height: 45px;
-  padding-left: 18px;
-  border-radius: 10px;
+
+/* APARTADO 5. Diseño con Flexbox */
+.topbar__inner {
+  display: flex; /* Activa Flexbox */
+  align-items: center; /* Alineación vertical */
+  gap: 20px; /* Separación */
 }
-#menu .wrap {
-  display: block;
+
+.brand {
+  font-size: 1.4rem; /* Tamaño de texto */
+  font-weight: 700; /* Negrita */
+}
+
+.brand span {
+  color: var(--brand); /* Resalta marca */
+}
+
+/* APARTADO 10. Menú con interacciones */
+#menu {
+  background: var(--brand); /* color fondo */
+  height: 45px;             /* altura fija */
+  padding-left: 18px;       /* espacio interno */
+  border-radius: 10px;      /* bordes redondeados */
 }
 
 #menu ul,
 #menu li {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  list-style: none;         /* sin viñetas */
+  margin: 0;                /* sin margen */
+  padding: 0;               /* sin relleno */
 }
-#menu ul {
-  width: 100%;
-}
+
 #menu li {
-  display: inline-block;
-  position: relative;
+  display: inline-block;    /* menú horizontal */
+  position: relative;       /* referencia submenú */
 }
+
 #menu a {
-  display: block;
-  line-height: 45px;
-  padding: 0 14px;
-  font-size: 16px;
-  color: #fff;
+  display: block;           /* área completa */
+  padding: 0 14px;          /* padding lateral */
+  line-height: 45px;        /* centrado vertical */
+  color: #fff;              /* texto blanco */
 }
-#menu a.dropdown-arrow:after {
-  content: "\25BE";
-  margin-left: 5px;
+
+#menu a.dropdown-arrow::after {
+  content: "▾";             /* icono flecha */
+  margin-left: 5px;         /* separación texto */
 }
+
 #menu li a:hover {
-  background: #f2f2f2;
-  color: var(--brand);
+  background: #f2f2f2;      /* hover fondo */
+  color: var(--brand);      /* hover color */
 }
 
-/* Toggle para móviles (checkbox + label) */
-#menu input {
-  display: none;
-}
-#menu label {
-  display: none;
-}
-
-/* Submenús desplegables */
 #menu ul.sub-menus {
-  background: #222;
-  position: absolute;
-  z-index: 99;
-  display: none;
-  border-radius: 8px;
-  width: 220px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
-}
-#menu ul.sub-menus li {
-  display: block;
-}
-#menu ul.sub-menus a {
-  line-height: 40px;
-  padding-left: 14px;
+  display: none;            /* oculto defecto */
+  position: absolute;       /* flotante */
+  background: #222;         /* fondo oscuro */
+  width: 220px;             /* ancho fijo */
+  border-radius: 8px;       /* bordes suaves */
+  border: 1px solid rgba(255,255,255,.08); /* borde sutil */
+  box-shadow: 0 8px 20px rgba(0,0,0,.35);  /* sombra */
+  z-index: 99;              /* prioridad visual */
 }
 
-/* Mostrar submenú en hover (escritorio) */
 #menu li:hover ul.sub-menus {
-  display: block;
+  display: block;           /* mostrar hover */
+  /* APARTADO 10 */
 }
 
-/* =======================
-   Menú en pantallas pequeñas
-   ======================= */
-@media screen and (max-width: 800px) {
+#menu input,
+#menu label {
+  display: none;            /* oculto desktop */
+}
+
+
+/* APARTADO RESPONSIVE */
+@media (max-width: 800px) {
   #menu {
-    position: relative;
+    position: relative;     /* contenedor móvil */
   }
-  #menu ul {
-    background: #222;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
-    display: none;
-    border-radius: 0 0 10px 10px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-top: none;
-  }
+
   #menu label {
-    display: block;
-    position: absolute;
-    top: 0;
+    display: block;         /* botón visible */
+    width: 45px;            /* ancho botón */
+    height: 45px;           /* alto botón */
+    line-height: 45px;      /* centrado vertical */
+    text-align: center;     /* centrado horizontal */
+    color: #fff;            /* color icono */
+  }
+
+  #menu label::before {
+    content: "≡";           /* icono menú */
+    font-size: 1.6em;       /* tamaño icono */
+  }
+
+  #menu input:checked + label::before {
+    content: "×";           /* icono cierre */
+    /* APARTADO CSS PURO */
+  }
+
+  #menu ul {
+    display: none;          /* oculto móvil */
+    position: absolute;     /* desplegable */
+    top: 100%;              /* debajo menú */
     left: 0;
-    width: 45px;
-    height: 45px;
-    line-height: 45px;
-    text-align: center;
-    color: #fff;
+    right: 0;
+    background: #222;       /* fondo menú */
+    border-radius: 0 0 10px 10px; /* bordes abajo */
   }
-  #menu label:before {
-    content: "\2261"; /* icono hamburguesa */
-    font-size: 1.6em;
-  }
-  #menu input:checked + label:before {
-    content: "\00d7"; /* icono de cierre */
-  }
+
   #menu input:checked ~ ul {
-    display: block;
+    display: block;         /* mostrar menú */
+    /* APARTADO RESPONSIVE */
   }
+
   #menu li {
-    display: block;
+    display: block;         /* lista vertical */
   }
+
   #menu ul.sub-menus {
-    width: 100%;
-    position: static;
-    background: #1a1a1a;
-    border: none;
-    box-shadow: none;
+    position: static;       /* flujo normal */
+    width: 100%;            /* ancho completo */
+    border: none;           /* sin borde */
+    box-shadow: none;       /* sin sombra */
   }
 }
 
 /* =======================
    HERO
    ======================= */
-/* Imagen más contenida y con borde/sombra */
+
+
+/* APARTADO 7. Uso de imágenes + alt */
 .hero {
-  background: radial-gradient(1200px 600px at 70% -10%, #1b1c2f, transparent),
-    linear-gradient(180deg, #121216, #0f0f10 60%);
-  padding: 60px 0;
+  background:
+    radial-gradient(1200px 600px at 70% -10%, #1b1c2f, transparent), /* efecto luz */
+    linear-gradient(180deg, #121216, #0f0f10 60%);                  /* degradado */
+  padding: 60px 0;          /* espacio vertical */
+  border-radius: var(--radius); /* bordes */
+  transition: background-color .25s ease, box-shadow .25s ease; /* transición */
 }
 
 .hero__content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+  display: flex;            /* flexbox */
+  align-items: center;      /* centrado vertical */
+  justify-content: space-between; /* separación */
+  gap: 40px;                /* espacio elementos */
+  /* APARTADO 5. Diseño con Flexbox */
 }
 
-/* Título y apoyo */
+.hero__text {
+  padding: 10px 14px;       /* padding texto */
+  border-radius: var(--radius); /* bordes */
+  transition: background-color .2s ease, box-shadow .2s ease, border-color .2s ease; /* transición */
+}
+
 .hero__text h2 {
-  font-size: 2.4rem;
-  margin: 0 0 12px;
+  margin: 0 0 12px;         /* margen título */
+  font-size: 2.4rem;       /* tamaño texto */
 }
 
 .lead {
-  color: var(--muted);
-  margin: 0;
+  margin: 0;                /* sin margen */
+  color: var(--muted);      /* color secundario */
 }
 
-/* Contenedor de la imagen del hero */
+/* APARTADO 7. Uso de imágenes + alt */
 .hero-media {
-  flex: 0 1 45%; /* ~la mitad del ancho disponible */
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
-  aspect-ratio: 16 / 9;
+  flex: 0 1 45%;            /* tamaño imagen */
+  aspect-ratio: 16/9;      /* proporción */
+  border-radius: var(--radius); /* bordes */
+  overflow: hidden;         /* recorte */
+  border: 1px solid var(--line); /* borde */
+  box-shadow: var(--shadow); /* sombra */
 }
 
 .hero-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  width: 100%;              /* ancho total */
+  height: 100%;             /* alto total */
+  object-fit: cover;        /* ajuste imagen */
 }
 
-/* Ajustes responsive del hero */
+.hero:hover,
+.hero-media:hover {
+  background-color: rgba(0,153,204,0.08); /* hover suave */
+  box-shadow:
+    inset 0 0 0 3px rgba(0,153,204,0.35),
+    var(--shadow);           /* efecto foco */
+}
+
+/* Responsive hero */
+/* APARTADO RESPONSIVE */
 @media (max-width: 1000px) {
   .hero__content {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: column; /* columnas */
+    text-align: center;     /* texto centrado */
   }
 
   .hero-media {
-    flex: none;
-    width: 80%;
-    aspect-ratio: 16 / 9;
+    width: 80%;             /* ancho medio */
   }
 }
 
 @media (max-width: 600px) {
   .hero-media {
-    width: 100%;
+    width: 100%;            /* ancho completo */
   }
 }
 
 /* =======================
-   Secciones y tarjetas
+   SECCIONES Y TARJETAS
    ======================= */
+
+/* 12. Contenido propio o Lorem Ipsum con artículos repetidos */
+/* APARTADO 12. Contenido propio */
 .section {
-  padding: 50px 0;
-}
-.section--alt {
-  background: #111;
+  padding: 50px 0;          /* espacio vertical */
 }
 
+.section--alt {
+  background: #111;         /* fondo alterno */
+}
+
+/* APARTADO 5. Diseño con Flexbox */
 .cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-around;
+  display: flex;            /* flexbox */
+  flex-wrap: wrap;          /* salto línea */
+  gap: 20px;                /* separación */
+  justify-content: space-around; /* reparto */
 }
+
 .card {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  width: clamp(260px, 30%, 420px);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  width: clamp(260px, 30%, 420px); /* ancho adaptable */
+  background: var(--panel);       /* fondo tarjeta */
+  border: 1px solid var(--line);  /* borde */
+  border-radius: var(--radius);   /* bordes */
+  box-shadow: var(--shadow);      /* sombra */
+  transition: background-color .2s ease, box-shadow .2s ease, border-color .2s ease; /* transición */
 }
+
 .card img {
-  width: 100%;
-  aspect-ratio: 16/9;
-  object-fit: cover;
+  width: 100%;              /* ancho completo */
+  aspect-ratio: 16/9;      /* proporción */
+  object-fit: cover;       /* ajuste imagen */
 }
+
 .card__body {
-  padding: 16px;
+  padding: 16px;            /* padding interno */
+}
+
+.card:hover {
+  background-color: rgba(0,153,204,0.12); /* hover fondo */
+  border-color: var(--brand);             /* hover borde */
+  box-shadow:
+    var(--shadow),
+    inset 0 0 0 2px rgba(0,153,204,0.35); /* hover efecto */
 }
 
 /* =======================
-   NUEVO: Hardware en detalle (con barra lateral)
+   HARDWARE EN DETALLE
    ======================= */
+
+
+/* APARTADO 3. Estructura semántica */
 .section--hardware {
-  background: #0f1115;
+  background: #0f1115;      /* fondo sección */
 }
 
+/* APARTADO 5. Diseño con Flexbox / GRID (layout avanzado) */
 .hw-layout {
-  display: grid;
-  grid-template-columns: 1.4fr 0.8fr; /* principal | lateral */
-  gap: 24px;
-  align-items: start;
+  display: grid;            /* grid layout */
+  grid-template-columns: 1.4fr .8fr; /* columnas */
+  gap: 24px;                /* separación */
+  align-items: start;       /* alineación */
+  /* APARTADO GRID */
 }
 
-.hw-main {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 18px;
+.hw-main,
+.hw-aside {
+  background: #11152a;      /* fondo panel */
+  border: 1px solid var(--line); /* borde */
+  border-radius: var(--radius);  /* bordes */
+  padding: 18px;            /* padding */
 }
 
 .hw-aside {
-  background: #11152a;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 18px;
-  position: sticky;
-  top: 80px; /* permanece visible al hacer scroll */
+  position: sticky;         /* fijo scroll */
+  top: 80px;                /* margen superior */
+  max-height: calc(100vh - 120px); /* alto máximo */
+  overflow-y: auto;         /* scroll vertical */
+  overscroll-behavior: contain; /* control scroll */
 }
 
-.glossary {
-  margin: 0;
-}
-.glossary dt {
-  font-weight: 600;
-}
-.glossary dd {
-  margin: 0 0 8px 0;
-  color: var(--muted);
-}
-.table-scroll {
-  overflow: auto;
-}
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.95rem;
-}
-.table th,
-.table td {
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 10px 12px;
-  text-align: left;
-}
-.table thead th {
-  background: #1b1f33;
+.hw-aside::-webkit-scrollbar {
+  width: 8px;               /* ancho barra */
 }
 
-/* Responsive para la sección de hardware */
+.hw-aside::-webkit-scrollbar-thumb {
+  background: var(--brand); /* color barra */
+  border-radius: 6px;       /* bordes barra */
+}
+
+.hw-aside::-webkit-scrollbar-track {
+  background: transparent;  /* fondo barra */
+}
+
 @media (max-width: 1100px) {
   .hw-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* una columna */
+    /* APARTADO RESPONSIVE */
   }
+
   .hw-aside {
-    position: static;
+    position: static;       /* posición normal */
+    max-height: none;       /* sin límite */
+    overflow: visible;      /* sin scroll */
   }
 }
 
-/* =======================
-   Layout con aside
-   ======================= */
-.layout {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+/* Tablas */
+.table-scroll {
+  overflow: auto;           /* scroll tabla */
 }
-.layout-main {
-  flex: 1 1 520px;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  padding: 20px;
-  border-radius: var(--radius);
+
+.table {
+  width: 100%;              /* ancho total */
+  border-collapse: collapse; /* unir bordes */
+  font-size: .95rem;        /* tamaño texto */
 }
-.layout-aside {
-  flex: 0 1 280px;
-  background: #11152a;
-  border: 1px solid var(--line);
-  padding: 20px;
-  border-radius: var(--radius);
+
+.table th,
+.table td {
+  border: 1px solid rgba(255,255,255,.12); /* borde celdas */
+  padding: 10px 12px;       /* padding */
+  text-align: left;         /* alineación */
+}
+
+.table thead th {
+  background: #1b1f33;      /* fondo cabecera */
+}
+
+/* Glosario */
+.glossary dt {
+  font-weight: 600;         /* texto fuerte */
+}
+
+.glossary dd {
+  margin: 0 0 8px;          /* margen inferior */
+  color: var(--muted);      /* color suave */
 }
 
 /* =======================
-   Demos de Flexbox
+   GUÍA Y UTILIDADES
    ======================= */
-.demo {
-  padding: 14px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: #0b0e1a;
-}
-.demo-box {
-  background: var(--accent);
-  padding: 12px 14px;
-  color: #000;
-  border-radius: 10px;
-}
-.pill {
-  padding: 10px 14px;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  margin: 6px;
-}
 
-/* Contenedor flexible genérico */
-.flex-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-}
-
-/* Bloques de código formateados */
-.code {
-  background: #0b0e1a;
-  color: #d7e1ff;
-  padding: 18px;
-  border-radius: 12px;
-  border: 1px solid var(--line);
-  overflow-x: auto;
-}
-
-/* ======================================
-   HTML semántico: grid de comparación
-   ====================================== */
-.semantics-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
-}
-.sem-card {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 16px;
-}
-.sem-card h3 {
-  margin: 0 0 10px;
-}
-
-@media (min-width: 900px) {
-  .semantics-grid {
-    grid-template-columns: 1fr 1fr; /* dos columnas en escritorio */
-    align-items: start;
-  }
-}
-
-/* =======================
-   Guía de diseño
-   ======================= */
 .flow > * + * {
-  margin-top: 1em;
+  margin-top: 0.65em;       /* flujo texto */
 }
 
-/* =======================
-   Pie de página
-   ======================= */
-.site-footer {
-  padding: 20px 0;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
-  text-align: center;
-}
-
-/* =======================
-   Utilidades varias
-   ======================= */
-/* Flujo vertical entre elementos consecutivos */
-.flow > * + * {
-  margin-top: 0.65em;
-}
-
-/* Espaciados rápidos */
 .stack-sm > * + * {
-  margin-top: 8px;
+  margin-top: 8px;          /* separación pequeña */
 }
+
 .stack-md > * + * {
-  margin-top: 14px;
+  margin-top: 14px;         /* separación media */
 }
+
 .stack-lg > * + * {
-  margin-top: 24px;
+  margin-top: 24px;         /* separación grande */
 }
 
-/* Accesibilidad: foco visible y preferencias de movimiento */
-:focus-visible {
-  outline: 3px solid var(--brand);
-  outline-offset: 2px;
-}
-img[loading="lazy"] {
-  content-visibility: auto;
-}
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
-  
-}
-/* =======================================================
-   RESALTADO AZUL PARA EL TEXTO DEL HERO
-   ======================================================= */
+/* =======================
+   RESALTADO GENERAL
+   ======================= */
 
-.hero__text {
-  transition: background-color .20s ease, box-shadow .20s ease, border-color .20s ease;
-  border-radius: var(--radius);
-  padding: 10px 14px;        /* crea un pequeño fondo para marcar el hover */
-}
-
-.hero__text:hover {
-  background-color: rgba(0,153,204,0.12);
-  border: 1px solid var(--brand);
-  box-shadow:
-    var(--shadow),
-    0 0 0 2px rgba(0,153,204,0.35) inset;
-}
-
-/* =======================================================
-   RESALTADO AZUL PARA TODO EL HERO TRAS HOVER
-   ======================================================= */
-
-/* Preparamos el hero para poder iluminar su fondo */
-.hero {
-  transition: background-color .25s ease, box-shadow .25s ease;
-  border-radius: var(--radius);
-  position: relative;
-}
-
-/* Cuando el texto o la imagen reciben hover → iluminar hero completo */
-.hero__text:hover ~ .hero-media,
-.hero-media:hover,
-.hero__text:hover,
-.hero:hover {
-  background-color: rgba(0,153,204,0.10);
-  box-shadow:
-    inset 0 0 0 3px rgba(0,153,204,0.35),
-    var(--shadow);
-  border-color: var(--brand);
-}
-
-/* Para asegurar que el hero completo responde al hover del usuario */
-.hero:hover {
-  background-color: rgba(0,153,204,0.08);
-}
-
-
-/* =======================================================
-   RESALTADO AZUL AL PASAR EL RATÓN SOBRE CUALQUIER RECUADRO
-   ======================================================= */
-
-/* Todos los contenedores relevantes del sitio */
 .card,
-.layout-main,
-.layout-aside,
 .hw-main,
 .hw-aside,
-.demo,
-.sem-card,
 .hero-media,
 .section,
 .table,
-.table-scroll,
-.pill,
-.code {
-  transition: background-color 0.2s ease, box-shadow 0.2s ease,
-    border-color 0.2s ease;
+.table-scroll {
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease; /* transición común */
 }
 
-/* Efecto al pasar el ratón */
 .card:hover,
-.layout-main:hover,
-.layout-aside:hover,
 .hw-main:hover,
 .hw-aside:hover,
-.demo:hover,
-.sem-card:hover,
 .hero-media:hover,
-.pill:hover,
-.code:hover {
-  background-color: rgba(0, 153, 204, 0.12); /* fondo azulado */
-  border-color: var(--brand); /* borde azul */
-  box-shadow: var(--shadow), 0 0 0 2px rgba(0, 153, 204, 0.35) inset; /* halo azul interior */
+.table:hover,
+.table-scroll:hover {
+  background-color: rgba(0,153,204,0.12); /* hover global */
+  border-color: var(--brand);             /* borde activo */
+  box-shadow:
+    var(--shadow),
+    inset 0 0 0 2px rgba(0,153,204,0.35); /* efecto foco */
 }
 
 .section:hover {
-  box-shadow: inset 0 0 0 2px rgba(0, 153, 204, 0.28);
+  box-shadow: inset 0 0 0 2px rgba(0,153,204,0.28); /* hover sección */
 }
 
-/* Botones genéricos */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 16px;
-  border-radius: 10px;
-  border: 1px solid var(--line);
-  background: var(--panel);
-  color: var(--ink);
-  cursor: pointer;
-  transition: transform 0.08s ease, background 0.2s ease, border-color 0.2s ease;
-}
-.btn--primary {
-  background: var(--brand);
-  color: #0a0a0a;
-  border-color: transparent;
-}
-.btn:hover {
-  transform: translateY(-1px);
-}
-.btn:active {
-  transform: translateY(0);
-}
+/* =======================
+   FOOTER
+   ======================= */
 
-/* Transición suave en enlaces de navegación heredados */
-.topnav a {
-  transition: background 0.2s ease, opacity 0.2s ease;
+/* 11. Footer con redes sociales */
+/* APARTADO 11. Footer con redes sociales */
+.site-footer {
+  padding: 20px 0;          /* espacio */
+  border-top: 1px solid var(--line); /* línea superior */
+  color: var(--muted);      /* color texto */
+  text-align: center;       /* centrado */
 }
